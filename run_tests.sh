@@ -1,5 +1,5 @@
 #!/bin/sh
 
-for F in tests/bin/*; do
+for F in build/tests/*; do
     ./$F
 done

@@ -4,10 +4,10 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <array.hpp>
-#include <list.hpp>
-#include <sort.hpp>
-#include <random.hpp>
+#include <Designar/array.hpp>
+#include <Designar/list.hpp>
+#include <Designar/sort.hpp>
+#include <Designar/random.hpp>
 
 using namespace std;
 using namespace Designar;

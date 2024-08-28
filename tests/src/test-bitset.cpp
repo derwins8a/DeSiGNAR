@@ -4,8 +4,8 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <bitset.hpp>
-#include <random.hpp>
+#include <Designar/bitset.hpp>
+#include <Designar/random.hpp>
 
 using namespace std;
 using namespace Designar;

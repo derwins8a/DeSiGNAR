@@ -1,72 +1,117 @@
-cmake_minimum_required(VERSION 3.20)
-project(Designar VERSION 2.0.0)
+# set cmake minimum version
+cmake_minimum_required(VERSION 3.30...3.30.2 FATAL_ERROR)
 
-# Set C++ Required version
-SET(CMAKE_CXX_STANDARD 17)
-SET(CMAKE_CXX_STANDARD_REQUIRED true)
+### require out-of-source builds
+file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
+if(EXISTS "${LOC_PATH}")
+    message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
+endif()
 
-# Use -std=c++XX instead of -std=gnu++XX
-set(CMAKE_CXX_EXTENSIONS OFF)
+# define a macro that helps defining an option
+macro(set_option var default type docstring)
+    if(NOT DEFINED ${var})
+        set(${var} ${default})
+    endif()
+    set(${var} ${${var}} CACHE ${type} ${docstring} FORCE)
+endmacro()
 
-# Append macro directory to CMake Path
-list(APPEND CMAKE_MODULE_PATH
-  "${CMAKE_SOURCE_DIR}/cmake/macros")
+# these options have to be set before CMake detects/configures the toolchain
 
-# Import cmake options
-include(CTest)
-include(ConfigureBaseTargets)
-include(CheckPlatform)
+# determine whether to create a debug or release build
+set_option(CMAKE_BUILD_TYPE Release STRING "Choose the type of build (Debug or Release)")
 
-# Designar Library
-file(GLOB DESIGNAR_SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
-add_library(Designar STATIC ${DESIGNAR_SOURCES})
-target_include_directories(Designar PUBLIC "${PROJECT_SOURCE_DIR}/include")
-target_link_libraries(Designar 
-  PUBLIC 
-    designar-warning-interface
-    designar-compile-option-interface
-)
-install(
-  TARGETS Designar
-  DESTINATION ${PROJECT_SOURCE_DIR}/lib
+# project name
+project(DeSiGNAR
+        VERSION 2.0.1
+        LANGUAGES CXX
 )
 
-find_package(Threads REQUIRED)
+# include the configuration file
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake)
 
-# Designar Samples
-file(GLOB DESIGNAR_SAMPLES_SOURCES "${PROJECT_SOURCE_DIR}/samples/src/*.cpp")
-foreach(samplefile ${DESIGNAR_SAMPLES_SOURCES})
-  get_filename_component(samplename ${samplefile} NAME_WE)
-  add_executable(${samplename} ${samplefile})
-  target_link_libraries(${samplename}
-    PUBLIC
-      Designar
-      Threads::Threads
-  )
-  install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/${samplename}
-    DESTINATION ${PROJECT_SOURCE_DIR}/samples/bin
-  )
-endforeach(samplefile ${DESIGNAR_SAMPLES_SOURCES})
+# we use the paths from the cmake GNUInstallDirs module as defaults
+# you can override these if you like
+# https://cmake.org/cmake/help/v3.0/module/GNUInstallDirs.html
+include(GNUInstallDirs)
 
-# Designar Tests
-file(GLOB DESIGNAR_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/tests/src/*.cpp")
-foreach(testfile ${DESIGNAR_TESTS_SOURCES})
-  get_filename_component(testname ${testfile} NAME_WE)
-  add_executable(${testname} ${testfile})
-  target_link_libraries(${testname}
-    PUBLIC
-      Designar
-      Threads::Threads
-  )
-  install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/${testname}
-    DESTINATION ${PROJECT_SOURCE_DIR}/tests/bin
-  )
-  add_test(
-    NAME
-      ${testname}
-    COMMAND
-      ${testname}
-  )
-endforeach(testfile ${DESIGNAR_TESTS_SOURCES})
+# setup version numbers
+set(VERSION_MAJOR 2)
+set(VERSION_MINOR 0)
+set(VERSION_PATCH 1)
+
+# add an option for choosing the build type (shared or static)
+set_option(BUILD_SHARED_LIBS FALSE BOOL "TRUE to build DeSiGNAR as a shared library, FALSE to build it as static library")
+
+# add an option for building the examples
+set_option(DESIGNAR_BUILD_EXAMPLES FALSE BOOL "TRUE to build the DeSiGNAR examples, FALSE to ignore them")
+
+# add an option for building the test suite
+set_option(DESIGNAR_BUILD_TEST_SUITE FALSE BOOL "TRUE to build the DeSiGNAR test suite, FALSE to ignore it")
+
+# install directories
+# For miscellaneous files
+set(DEFAULT_INSTALL_MISC_DIR share/Designar)
+
+# enable project folders
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMake")
+
+# globally include folder
+include_directories(${PROJECT_SOURCE_DIR}/include/Designar)
+
+# add the subdirectories
+add_subdirectory(src)
+if(DESIGNAR_BUILD_EXAMPLES)
+    add_subdirectory(samples)
+endif()
+if(DESIGNAR_BUILD_TEST_SUITE)
+    # enable_testing()
+    add_subdirectory(tests)
+endif()
+
+# install pkg-config files by default
+set(DESIGNAR_INSTALL_PKGCONFIG_DEFAULT FALSE)
+
+set_option(DESIGNAR_INSTALL_PKGCONFIG_FILES ${DESIGNAR_INSTALL_PKGCONFIG_DEFAULT} BOOL "TRUE to automatically install pkg-config files so other projects can find DeSiGNAR")
+
+if(DESIGNAR_INSTALL_PKGCONFIG_FILES)
+    # account for CMAKE_INSTALL_LIBDIR potentially being an absolute path
+    file(RELATIVE_PATH DESIGNAR_RELATIVE_INSTALL_LIBDIR ${CMAKE_INSTALL_PREFIX} ${CMAKE_INSTALL_FULL_LIBDIR})
+
+    # set pkgconfig install directory
+    # this could be e.g. macports on mac or msys2 on windows etc.
+    set(DESIGNAR_PKGCONFIG_DIR "/${DESIGNAR_RELATIVE_INSTALL_LIBDIR}/pkgconfig")
+
+    set_option(DESIGNAR_PKGCONFIG_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/${DESIGNAR_PKGCONFIG_DIR}" PATH "Install directory for DeSiGNAR's pkg-config .pc file")
+
+    CONFIGURE_FILE(
+        "tools/pkg-config/designar.pc.in"
+        "tools/pkg-config/designar.pc"
+        @ONLY)
+    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/tools/pkg-config/designar.pc"
+        DESTINATION "${DESIGNAR_PKGCONFIG_INSTALL_PREFIX}")
+endif()
+
+# setup the install rules
+install(DIRECTORY include
+        DESTINATION .
+        COMPONENT devel
+        FILES_MATCHING PATTERN "*.hpp" PATTERN "*.inl")
+
+install(FILES LICENSE DESTINATION ${CMAKE_INSTALL_DOCDIR})
+install(FILES README.md DESTINATION ${CMAKE_INSTALL_DOCDIR})
+
+designar_export_targets()
+
+set(CPACK_PACKAGE_NAME_SUMMARY "DeSiGNAR")
+set(CPACK_PACKAGE_VENDOR "R3mmurd")
+set(CPACK_PACKAGE_FILE_NAME "DeSiGNAR-${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}-${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION}-${CMAKE_BUILD_TYPE}")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set(CPACK_PACKAGE_VERSION_MAJOR "${VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${VERSION_PATCH}")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "DeSiGNAR ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+set(CPACK_MONOLITHIC_INSTALL ON)
+
+include(CPack)

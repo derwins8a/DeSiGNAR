@@ -1,0 +1,11 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@DESIGNAR_RELATIVE_INSTALL_LIBDIR@
+includedir=${prefix}/include
+
+Name: DeSiGNAR
+Description: The Data Structures GeNeral librARy.
+URL: https://github.com/R3mmurd/DeSiGNAR
+Version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
+Libs: -L${libdir} -lDesignar
+Cflags: -I${includedir}

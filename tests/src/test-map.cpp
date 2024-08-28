@@ -4,8 +4,8 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <array.hpp>
-#include <map.hpp>
+#include <Designar/array.hpp>
+#include <Designar/map.hpp>
 
 using namespace std;
 using namespace Designar;

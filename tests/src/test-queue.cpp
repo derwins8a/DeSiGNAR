@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <queue.hpp>
+#include <Designar/queue.hpp>
 
 using namespace std;
 using namespace Designar;

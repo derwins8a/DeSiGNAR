@@ -4,10 +4,10 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <bitset.hpp>
-#include <list.hpp>
-#include <set.hpp>
-#include <polygon.hpp>
+#include <Designar/bitset.hpp>
+#include <Designar/list.hpp>
+#include <Designar/set.hpp>
+#include <Designar/polygon.hpp>
 
 using namespace std;
 using namespace Designar;

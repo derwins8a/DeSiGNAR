@@ -8,10 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Run Cmake
+    - name: Build & Run tests
       run: 
-        mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang ../
-    - name: Build Library
-      run: cd build && make all
-    - name: Run tests
-      run: cd build && make test
+        cmake -S . -B build && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DDESIGNAR_BUILD_TEST_SUITE=ON --build build

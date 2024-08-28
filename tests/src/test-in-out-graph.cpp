@@ -10,7 +10,7 @@
 
 using namespace std;
 
-#include <buildgraph.hpp>
+#include <Designar/buildgraph.hpp>
 
 using namespace Designar;
 

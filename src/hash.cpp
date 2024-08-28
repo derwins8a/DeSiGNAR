@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <hash.hpp>
+#include <Designar/hash.hpp>
 
 namespace Designar
 {

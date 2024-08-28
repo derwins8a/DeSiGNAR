@@ -4,8 +4,8 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <heap.hpp>
-#include <random.hpp>
+#include <Designar/heap.hpp>
+#include <Designar/random.hpp>
 
 using namespace std;
 

@@ -4,10 +4,10 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <list.hpp>
-#include <set.hpp>
-#include <sort.hpp>
-#include <random.hpp>
+#include <Designar/list.hpp>
+#include <Designar/set.hpp>
+#include <Designar/sort.hpp>
+#include <Designar/random.hpp>
 
 using namespace std;
 using namespace Designar;

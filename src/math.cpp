@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <math.hpp>
+#include <Designar/math.hpp>
 
 namespace Designar
 {

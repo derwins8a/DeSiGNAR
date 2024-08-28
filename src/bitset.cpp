@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <bitset.hpp>
+#include <Designar/bitset.hpp>
 
 namespace Designar
 {

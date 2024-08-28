@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <graphalgorithms.hpp>
+#include <Designar/graphalgorithms.hpp>
 
 using namespace std;
 using namespace Designar;

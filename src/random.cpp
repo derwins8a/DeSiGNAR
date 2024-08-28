@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <random.hpp>
+#include <Designar/random.hpp>
 
 namespace Designar
 {

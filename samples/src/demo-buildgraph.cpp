@@ -4,8 +4,8 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <graph.hpp>
-#include <buildgraph.hpp>
+#include <Designar/graph.hpp>
+#include <Designar/buildgraph.hpp>
 
 using namespace Designar;
 

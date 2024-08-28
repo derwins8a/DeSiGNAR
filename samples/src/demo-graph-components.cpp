@@ -8,7 +8,7 @@
 
 using namespace std;
 
-#include <graphalgorithms.hpp>
+#include <Designar/graphalgorithms.hpp>
 
 using namespace Designar;
 

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-#include <relation.hpp>
+#include <Designar/relation.hpp>
 
 using namespace Designar;
 

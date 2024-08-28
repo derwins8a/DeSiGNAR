@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <nodesdef.hpp>
+#include <Designar/nodesdef.hpp>
 
 namespace Designar
 {

@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <graphutilities.hpp>
+#include <Designar/graphutilities.hpp>
 
 namespace Designar
 {

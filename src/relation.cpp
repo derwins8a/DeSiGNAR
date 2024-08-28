@@ -4,7 +4,7 @@
   Author: Alejandro Mujica (aledrums@gmail.com)
 */
 
-#include <relation.hpp>
+#include <Designar/relation.hpp>
 
 namespace Designar
 {
