@@ -40,7 +40,7 @@ set(VERSION_MINOR 0)
 set(VERSION_PATCH 1)
 
 # add an option for choosing the build type (shared or static)
-set_option(BUILD_SHARED_LIBS FALSE BOOL "TRUE to build DeSiGNAR as a shared library, FALSE to build it as static library")
+set_option(BUILD_SHARED_LIBS TRUE BOOL "TRUE to build DeSiGNAR as a shared library, FALSE to build it as static library")
 
 # add an option for building the examples
 set_option(DESIGNAR_BUILD_EXAMPLES FALSE BOOL "TRUE to build the DeSiGNAR examples, FALSE to ignore them")
