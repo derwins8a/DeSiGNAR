@@ -31,6 +31,9 @@ macro(designar_add_library target)
     else()
         add_library(${target} ${THIS_SOURCES})
     endif()
+    add_library(Designar::${target} ALIAS ${target})
+
+    target_compile_features(${target} PUBLIC cxx_std_17)
 
     set_file_warnings(${THIS_SOURCES})
 
@@ -171,6 +174,7 @@ function(designar_export_targets)
 
     install(EXPORT DESIGNARConfigExport
             FILE ${targets_config_filename}
+            NAMESPACE Designar::
             DESTINATION ${config_package_location})
 
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/DesignarConfig.cmake"

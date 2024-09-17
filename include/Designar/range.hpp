@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include <types.hpp>
-#include <math.hpp>
-#include <iterator.hpp>
-#include <containeralgorithms.hpp>
+#include <Designar/types.hpp>
+#include <Designar/math.hpp>
+#include <Designar/iterator.hpp>
+#include <Designar/containeralgorithms.hpp>
 
 namespace Designar
 {

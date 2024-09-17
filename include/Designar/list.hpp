@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include <nodesdef.hpp>
-#include <containeralgorithms.hpp>
+#include <Designar/nodesdef.hpp>
+#include <Designar/containeralgorithms.hpp>
 
 namespace Designar
 {

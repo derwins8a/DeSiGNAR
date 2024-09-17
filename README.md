@@ -33,20 +33,20 @@ The structure of this library is:
 ```shell
 $ cmake -S . -B build
 $ cmake --build build --config Release
-$ cmake --install build --config Release
+$ sudo cmake --install build --config Release
 ```
 
 - Tests will be ran automatically after finishing if they were built.
 
 After this, the static library `libDesignar-s.a` is located in the directory `/usr/local/lib/` probably
 
+- Can link with CMake using target Designar::Designar
+- Also FetchContent compatible now :)
+
 # Notes
 
 > [!IMPORTANT]
 > DISCLAIMER: This fork has been made solely for EDUCATIONAL PURPOSES and it contains BREAKING CHANGES as it's meant only for INTERNAL usage.
-
-> [!WARNING]
-> Support for building with CMake for platforms other than Linux has been dropped for the moment.
 
 > [!NOTE]
 > Shout-out to [SFML](https://github.com/SFML/SFML/), we kinda ripped off their CMake files. Also there are a lot of leftovers that weren't cleaned nor tested.

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <array.hpp>
+#include <Designar/array.hpp>
 
 namespace Designar
 {

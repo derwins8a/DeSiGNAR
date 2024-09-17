@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include <polygon.hpp>
-#include <list.hpp>
-#include <set.hpp>
-#include <sort.hpp>
+#include <Designar/polygon.hpp>
+#include <Designar/list.hpp>
+#include <Designar/set.hpp>
+#include <Designar/sort.hpp>
 
 namespace Designar
 {

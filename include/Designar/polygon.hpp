@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include <segment.hpp>
-#include <nodesdef.hpp>
-#include <italgorithms.hpp>
+#include <Designar/segment.hpp>
+#include <Designar/nodesdef.hpp>
+#include <Designar/italgorithms.hpp>
 
 namespace Designar
 {

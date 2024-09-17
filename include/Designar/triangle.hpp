@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <segment.hpp>
+#include <Designar/segment.hpp>
 
 namespace Designar
 {

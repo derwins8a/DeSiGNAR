@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include <setalgorithms.hpp>
-#include <containeralgorithms.hpp>
-#include <iterator.hpp>
+#include <Designar/setalgorithms.hpp>
+#include <Designar/containeralgorithms.hpp>
+#include <Designar/iterator.hpp>
 
 namespace Designar
 {

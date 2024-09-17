@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <math.hpp>
+#include <Designar/math.hpp>
 
 namespace Designar
 {

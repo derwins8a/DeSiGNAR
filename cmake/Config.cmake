@@ -1,12 +1,3 @@
-# detect the OS
-if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-    set(DESIGNAR_OS_UNIX 1)
-    set(DESIGNAR_OS_LINUX 1)
-else()
-    message(FATAL_ERROR "Unsupported operating system or environment")
-    return()
-endif()
-
 # detect the compiler and its version
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(DESIGNAR_COMPILER_CLANG 1)

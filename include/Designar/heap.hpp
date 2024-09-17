@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include <array.hpp>
-#include <queue.hpp>
-#include <nodesdef.hpp>
-#include <sort.hpp>
+#include <Designar/array.hpp>
+#include <Designar/queue.hpp>
+#include <Designar/nodesdef.hpp>
+#include <Designar/sort.hpp>
 
 namespace Designar
 {

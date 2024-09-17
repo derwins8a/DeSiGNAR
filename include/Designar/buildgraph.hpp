@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include <graphalgorithms.hpp>
-#include <hash.hpp>
-#include <random.hpp>
+#include <Designar/graphalgorithms.hpp>
+#include <Designar/hash.hpp>
+#include <Designar/random.hpp>
 
 namespace Designar
 {

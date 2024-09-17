@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include <array.hpp>
-#include <list.hpp>
-#include <containeralgorithms.hpp>
-#include <setalgorithms.hpp>
-#include <iterator.hpp>
+#include <Designar/array.hpp>
+#include <Designar/list.hpp>
+#include <Designar/containeralgorithms.hpp>
+#include <Designar/setalgorithms.hpp>
+#include <Designar/iterator.hpp>
 
 #undef get16bits
 #if (defined(__GNUC__) && defined(__i386__)) || defined(__WATCOMC__) || defined(_MSC_VER) || defined(__BORLANDC__) || defined(__TURBOC__)

@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include <types.hpp>
-#include <typetraits.hpp>
+#include <Designar/types.hpp>
+#include <Designar/typetraits.hpp>
 
 namespace Designar
 {

@@ -21,7 +21,7 @@ endmacro()
 set_option(CMAKE_BUILD_TYPE Release STRING "Choose the type of build (Debug or Release)")
 
 # project name
-project(DeSiGNAR
+project(Designar
         VERSION 2.0.1
         LANGUAGES CXX
 )
@@ -39,9 +39,6 @@ set(VERSION_MAJOR 2)
 set(VERSION_MINOR 0)
 set(VERSION_PATCH 1)
 
-# add an option for choosing the build type (shared or static)
-set_option(BUILD_SHARED_LIBS TRUE BOOL "TRUE to build DeSiGNAR as a shared library, FALSE to build it as static library")
-
 # add an option for building the examples
 set_option(DESIGNAR_BUILD_EXAMPLES FALSE BOOL "TRUE to build the DeSiGNAR examples, FALSE to ignore them")
 
@@ -57,7 +54,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMake")
 
 # globally include folder
-include_directories(${PROJECT_SOURCE_DIR}/include/Designar)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # add the subdirectories
 add_subdirectory(src)

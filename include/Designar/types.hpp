@@ -24,7 +24,7 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
-#include <typetraits.hpp>
+#include <Designar/typetraits.hpp>
 
 namespace Designar
 {

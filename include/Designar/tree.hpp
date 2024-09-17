@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include <nodesdef.hpp>
-#include <containeralgorithms.hpp>
-#include <setalgorithms.hpp>
-#include <stack.hpp>
-#include <iterator.hpp>
+#include <Designar/nodesdef.hpp>
+#include <Designar/containeralgorithms.hpp>
+#include <Designar/setalgorithms.hpp>
+#include <Designar/stack.hpp>
+#include <Designar/iterator.hpp>
 
 namespace Designar
 {

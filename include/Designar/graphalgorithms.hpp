@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include <relation.hpp>
-#include <graph.hpp>
-#include <random.hpp>
+#include <Designar/relation.hpp>
+#include <Designar/graph.hpp>
+#include <Designar/random.hpp>
 
 namespace Designar
 {

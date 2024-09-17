@@ -6,13 +6,13 @@
 
 #pragma once
 
-#include <types.hpp>
+#include <Designar/types.hpp>
 
-#include <array.hpp>
-#include <list.hpp>
-#include <queue.hpp>
-#include <map.hpp>
-#include <heap.hpp>
+#include <Designar/array.hpp>
+#include <Designar/list.hpp>
+#include <Designar/queue.hpp>
+#include <Designar/map.hpp>
+#include <Designar/heap.hpp>
 
 namespace Designar
 {

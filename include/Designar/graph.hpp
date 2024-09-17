@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include <nodesdef.hpp>
-#include <graphutilities.hpp>
-#include <italgorithms.hpp>
-#include <sort.hpp>
+#include <Designar/nodesdef.hpp>
+#include <Designar/graphutilities.hpp>
+#include <Designar/italgorithms.hpp>
+#include <Designar/sort.hpp>
 
 namespace Designar
 {
