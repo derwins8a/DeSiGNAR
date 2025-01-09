@@ -1,5 +1,5 @@
 # set cmake minimum version
-cmake_minimum_required(VERSION 3.22.1 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 
 ### require out-of-source builds
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
